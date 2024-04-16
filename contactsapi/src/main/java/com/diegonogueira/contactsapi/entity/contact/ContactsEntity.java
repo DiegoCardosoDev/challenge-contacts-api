@@ -1,5 +1,6 @@
 package com.diegonogueira.contactsapi.entity.contact;
 
+import com.diegonogueira.contactsapi.entity.adress.AddressEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,9 +22,9 @@ public class ContactsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long contactId;
 
+
     @Column(name = "contact_name")
     private String contactName;
-
     @Column(name = "contact_email")
     private String contactEmail;
 
@@ -31,5 +33,8 @@ public class ContactsEntity {
 
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
+
+    @OneToMany(mappedBy = "contactsEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AddressEntity> addresses;
 
 }
