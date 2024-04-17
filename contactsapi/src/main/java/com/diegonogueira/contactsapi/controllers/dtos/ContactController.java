@@ -29,6 +29,12 @@ public class ContactController {
         return contactService.getAllCandidatesWithStacks();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable Long id) {
+        this.contactService.deleteContact(id);
+    }
+
+
 
 
 }
