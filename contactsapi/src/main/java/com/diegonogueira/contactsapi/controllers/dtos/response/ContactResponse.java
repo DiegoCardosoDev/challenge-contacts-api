@@ -2,9 +2,14 @@ package com.diegonogueira.contactsapi.controllers.dtos.response;
 
 import com.diegonogueira.contactsapi.controllers.dtos.request.AddressRequest;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
+@Getter
+@Setter
 public class ContactResponse {
 
     private String contactName;
@@ -12,7 +17,7 @@ public class ContactResponse {
     private String contactPhone;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 
-    private List<AddressRequest> addressRequestList;
+    private List<AddressResponse> addressRequestList;
 }

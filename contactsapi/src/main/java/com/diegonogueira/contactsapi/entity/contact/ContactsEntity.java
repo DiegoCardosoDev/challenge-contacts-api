@@ -20,6 +20,7 @@ public class ContactsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "contact_id")
     private Long contactId;
 
 
@@ -34,7 +35,11 @@ public class ContactsEntity {
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "contactsEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "contact_address",
+            joinColumns = @JoinColumn(name = "contact_id", referencedColumnName = "contact_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
     private List<AddressEntity> addresses;
-
 }

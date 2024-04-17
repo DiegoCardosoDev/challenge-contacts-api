@@ -10,7 +10,8 @@ public class AddressRequest {
 
 
     private String street;
+    private Long number;
     private String cep;
-    private String number;
+
 
 }

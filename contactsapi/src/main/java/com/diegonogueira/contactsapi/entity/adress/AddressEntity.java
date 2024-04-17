@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,7 +20,7 @@ public class AddressEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "addressId")
+    @Column(name = "address_id")
     private Long addressId;
 
 
@@ -31,8 +33,9 @@ public class AddressEntity {
     @Column(name = "number")
     private Long number;
 
-    @ManyToOne
-    @JoinColumn(name = "contact_id")
-    private ContactsEntity contactsEntity;
+    @ManyToMany(mappedBy = "addresses")
+    private List<ContactsEntity> contacts;
+
+
 }
 

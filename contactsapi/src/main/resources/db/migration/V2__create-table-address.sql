@@ -1,6 +1,5 @@
 CREATE TABLE address_tb (
-
-    addressId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    address_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     street VARCHAR(255) NOT NULL,
     cep VARCHAR(10) NOT NULL,
     number BIGINT
