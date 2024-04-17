@@ -29,9 +29,14 @@ public class ContactController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTechnologyStack);
     }
 
-    @GetMapping("/detail/list")
+    @GetMapping("/list")
     public List<ContactResponse> getAllCandidatesWithStacks() {
         return contactService.getAllContactsWithAddress();
+    }
+
+    @GetMapping("/search/{id}")
+    public ContactResponse getById(@PathVariable Long id) {
+        return contactService.getContactById(id);
     }
 
     @DeleteMapping("/delete/{id}")
