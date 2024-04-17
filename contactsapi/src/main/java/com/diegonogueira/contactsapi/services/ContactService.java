@@ -46,6 +46,17 @@ public class ContactService {
                 .collect(Collectors.toList());
     }
 
+    public ContactResponse getContactById(Long id){
+        try{
+            ContactsEntity candidateEntity = contactRepository.findById(id)
+                    .orElseThrow(() -> new UnprocessableEntityException("Contact not found with id: " + id));
+            return contactsMapper.mapContactsToResponse(candidateEntity);
+        }catch ( Exception e ){
+            throw new BusinessException(format("Error search Contact  with id: " + id),e);
+        }
+
+    }
+
     public void deleteContact(Long id){
         try{
             if ( !contactRepository.existsById(id) ) {
