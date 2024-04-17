@@ -1,4 +1,4 @@
-package com.diegonogueira.contactsapi.exeptions;
+package com.diegonogueira.contactsapi.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

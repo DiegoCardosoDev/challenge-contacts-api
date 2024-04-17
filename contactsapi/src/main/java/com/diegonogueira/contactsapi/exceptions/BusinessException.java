@@ -1,4 +1,4 @@
-package com.diegonogueira.contactsapi.exeptions;
+package com.diegonogueira.contactsapi.exceptions;
 
 public class BusinessException extends RuntimeException{
 

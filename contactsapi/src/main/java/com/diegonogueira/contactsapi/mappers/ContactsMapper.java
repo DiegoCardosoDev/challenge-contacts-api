@@ -4,8 +4,10 @@ package com.diegonogueira.contactsapi.mappers;
 import com.diegonogueira.contactsapi.controllers.dtos.request.ContactRequest;
 import com.diegonogueira.contactsapi.controllers.dtos.response.AddressResponse;
 import com.diegonogueira.contactsapi.controllers.dtos.response.ContactResponse;
+import com.diegonogueira.contactsapi.controllers.dtos.response.ContactUpdateResponse;
 import com.diegonogueira.contactsapi.entity.adress.AddressEntity;
 import com.diegonogueira.contactsapi.entity.contact.ContactsEntity;
+import com.diegonogueira.contactsapi.exceptions.UnprocessableEntityException;
 import com.diegonogueira.contactsapi.repository.AddressRepository;
 import com.diegonogueira.contactsapi.repository.ContactsRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +28,6 @@ public class ContactsMapper {
     @Autowired
     private AddressRepository addressRepository;
 
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
     public ContactResponse mapContactsToResponse(ContactsEntity contactsEntity) {
         ContactResponse contactResponse = new ContactResponse();
 
@@ -37,11 +37,12 @@ public class ContactsMapper {
         contactResponse.setDateOfBirth(contactsEntity.getDateOfBirth());
 
         List<AddressResponse> addressResponseList = contactsEntity.getAddresses().stream()
-                .map(stack -> {
+                .map(addressEntity -> {
                     AddressResponse response = new AddressResponse();
-                    response.setStreet(stack.getStreet());
-                    response.setNumber(stack.getNumber());
-                    response.setCep(stack.getCep());
+                    response.setStreet(addressEntity.getStreet());
+                    response.setNumber(addressEntity.getNumber());
+                    response.setCep(addressEntity.getCep());
+                    response.setActive(addressEntity.getActive());
                     return response;
                 })
                 .collect(Collectors.toList());
@@ -64,6 +65,7 @@ public class ContactsMapper {
                     addressEntity.setStreet(addressRequest.getStreet());
                     addressEntity.setCep(addressRequest.getCep());
                     addressEntity.setNumber(addressRequest.getNumber());
+                    addressEntity.setActive(addressRequest.getActive());
                     return addressRepository.save(addressEntity);
                 }).collect(Collectors.toList());
         contactsEntity.setAddresses(addressEntityList);
@@ -71,4 +73,30 @@ public class ContactsMapper {
         return contactsEntity;
 
     }
+    public ContactUpdateResponse mapContactToUpdateResponse(ContactsEntity contactsEntity, Long addressId) {
+        ContactUpdateResponse contactResponse = new ContactUpdateResponse();
+
+        contactResponse.setContactName(contactsEntity.getContactName());
+        contactResponse.setContactEmail(contactsEntity.getContactEmail());
+        contactResponse.setContactPhone(contactsEntity.getContactPhone());
+        contactResponse.setDateOfBirth(contactsEntity.getDateOfBirth());
+
+        // Buscar o endereço atualizado pelo ID
+        AddressEntity updatedAddress = contactsEntity.getAddresses().stream()
+                .filter(address -> address.getAddressId().equals(addressId))
+                .findFirst()
+                .orElseThrow(() -> new UnprocessableEntityException("Address not found with id: " + addressId));
+
+        contactResponse.setAddressId(updatedAddress.getAddressId());
+        contactResponse.setStreet(updatedAddress.getStreet());
+        contactResponse.setCep(updatedAddress.getCep());
+        contactResponse.setNumber(updatedAddress.getNumber());
+        contactResponse.setActive(updatedAddress.getActive());
+
+        return contactResponse;
+    }
+
+
+
+
 }

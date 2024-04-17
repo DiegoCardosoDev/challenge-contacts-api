@@ -33,6 +33,9 @@ public class AddressEntity {
     @Column(name = "number")
     private Long number;
 
+    @Column(name = "active")
+    private Boolean active;
+
     @ManyToMany(mappedBy = "addresses")
     private List<ContactsEntity> contacts;
 
