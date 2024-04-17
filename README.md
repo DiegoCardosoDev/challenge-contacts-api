@@ -1,12 +1,34 @@
 # challenge-contacts-api
 # API para gestão de contatos
 
+
+A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para criar, buscar, atualizar e deletar contatos, bem como seus endereços associados.
+
+## Funcionalidades
+
+- **Criar Contato**: Permite criar um novo contato.
+  
+- **Buscar Todos os Contatos**: Retorna uma lista com todos os contatos cadastrados, incluindo seus respectivos endereços.
+  
+- **Buscar Contato por ID**: Retorna um contato específico com seus detalhes e lista de endereços.
+  
+- **Deletar Contato por ID**: Remove um contato específico e seus endereços associados. Ao deletar um contato, todos os seus endereços também são excluídos.
+
+## Detalhes Adicionais
+
+- Um contato pode ter mais de um endereço associado.
+  
+- Ao buscar ou deletar um contato, os endereços associados a esse contato são retornados ou excluídos, respectivamente.
+  
+- Para gerenciar múltiplos endereços, foi adicionada uma regra que permite definir um endereço como ativo.
+
 ## Tecnologias usadas:
 
 - Java 17
 - Spring Boot
 - Mysql
 - Maven para gerenciamento de dependências
+- Swagger para documentação
 
 ## Dependências:
 
@@ -15,7 +37,7 @@
 - Lombok
 - Spring Web
 
-## Execução do projeto
+## Execução Local do projeto
 
 ### Instalação:
 
@@ -52,6 +74,8 @@ spring.jpa.hibernate.ddl-auto=none
 spring.jpa.show-sql=true
 logging.level.org.hibernate.SQL=DEBUG
 logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+
 
   
 
