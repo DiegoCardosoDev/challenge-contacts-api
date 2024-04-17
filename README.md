@@ -24,7 +24,7 @@
 - IDE Intellij
 - Postman para chamadas Http
 
-### Clone do projeto:
+### Clone do projeto: https://github.com/DiegoCardosoDev/challenge-contacts-api.git
 
 - crie  um banco no mysql
 - abra o projeto na ide Intellijj
