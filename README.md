@@ -22,6 +22,8 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
   
 - Para gerenciar múltiplos endereços, foi adicionada uma regra que permite definir um endereço como ativo.
 
+
+
 ## Tecnologias usadas:
 
 - Java 17
@@ -46,8 +48,6 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 - IDE Intellij
 - Postman para chamadas Http
 
-### Clone do projeto: https://github.com/DiegoCardosoDev/challenge-contacts-api.git
-
 - crie  um banco no mysql
 - abra o projeto na ide Intellijj
 - aguarde o build do projeto
@@ -64,7 +64,7 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 
 4. No arquivo `application.properties`, aplique as seguintes configurações:
 
-```properties
+```
 spring.application.name=contactsapi
 spring.datasource.url=jdbc:mysql://localhost:3306/seubancocriado?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
 spring.datasource.username=seu_user_name_do_mysql
@@ -74,6 +74,11 @@ spring.jpa.hibernate.ddl-auto=none
 spring.jpa.show-sql=true
 logging.level.org.hibernate.SQL=DEBUG
 logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+```
+
+## Links
+- Swagger: http://localhost:8080/swagger-ui/index.html#/
+- Clone do projeto: https://github.com/DiegoCardosoDev/challenge-contacts-api.git
 
 
 
