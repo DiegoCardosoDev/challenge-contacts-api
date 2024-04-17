@@ -7,8 +7,13 @@ import com.diegonogueira.contactsapi.controllers.dtos.response.ContactUpdateResp
 import com.diegonogueira.contactsapi.entity.contact.ContactsEntity;
 import com.diegonogueira.contactsapi.mappers.ContactsMapper;
 import com.diegonogueira.contactsapi.services.ContactService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping (value = "/contact", produces = {"application/json"})
+@Tag(name = "Contacts-Api")
 @RequiredArgsConstructor
 public class ContactController {
 
@@ -23,27 +29,58 @@ public class ContactController {
     private final ContactsMapper contactsMapper;
 
 
-    @PostMapping ("/save")
+    @Operation(summary = "Realiza A criação de contatos", method = "POST")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "contatos criado com sucesso"),
+            @ApiResponse(responseCode = "500", description = "Erro ao criar contato"),
+    })
+    @PostMapping (value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ContactResponse> createTechnologyStack(@RequestBody  ContactRequest contactRequest) {
         ContactResponse createdTechnologyStack = contactService.createCandidate(contactRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTechnologyStack);
     }
 
-    @GetMapping("/list")
+
+    @Operation(summary = "Realiza A bussca de contatos", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Busca de contatos realizada com sucesso!"),
+            @ApiResponse(responseCode = "500", description = "Erro ao realizar a Busca dos contatos"),
+    })
+    @GetMapping(value = "/list",consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<ContactResponse> getAllCandidatesWithStacks() {
         return contactService.getAllContactsWithAddress();
     }
 
-    @GetMapping("/search/{id}")
+    @Operation(summary = "Realiza A busca de contato por ID", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Busca de contato realizada com sucesso!"),
+            @ApiResponse(responseCode = "500", description = "Erro ao realizar a Busca do contato"),
+            @ApiResponse(responseCode = "422", description = "erro ao buscar o contato com id informado"),
+    })
+    @GetMapping(value = "/search/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ContactResponse getById(@PathVariable Long id) {
         return contactService.getContactById(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @Operation(summary = "Deleta o contato por ID", method = "DELETE")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Contato deletado com sucesso!"),
+            @ApiResponse(responseCode = "500", description = "Erro ao deletar o contato"),
+            @ApiResponse(responseCode = "422", description = "erro ao deletar o contato com id informado"),
+
+    })
+    @DeleteMapping(value = "/delete/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
     public void deleteById(@PathVariable Long id) {
         this.contactService.deleteContact(id);
     }
 
+    @Operation(summary = "Atualiza o contato por ID", method = "PUT")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Contato atualizado com sucesso!"),
+            @ApiResponse(responseCode = "500", description = "Erro ao atualizar o contato"),
+            @ApiResponse(responseCode = "422", description = "erro ao atualizar o contato com id informado"),
+
+    })
     @PutMapping("/update/{contactId}/address/{addressId}")
     public ResponseEntity<ContactUpdateResponse> updateContact(@PathVariable Long contactId, @PathVariable Long addressId,
                                                                @RequestBody UpdateContactAddressRequest request) {
