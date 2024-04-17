@@ -28,9 +28,4 @@ public class AddressMapper {
         return addressResponse;
     }
 
-    public AddressEntity mapAddressToRequest(AddressRequest addressRequest){
-
-        return new AddressEntity();
-
-    }
 }
