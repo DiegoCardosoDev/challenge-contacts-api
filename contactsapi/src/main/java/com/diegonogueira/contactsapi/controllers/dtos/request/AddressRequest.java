@@ -9,9 +9,11 @@ import lombok.Setter;
 public class AddressRequest {
 
 
+    private Long addressId;
     private String street;
     private Long number;
     private String cep;
+    private Boolean active;
 
 
 }

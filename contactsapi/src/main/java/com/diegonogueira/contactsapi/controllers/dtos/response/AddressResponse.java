@@ -15,4 +15,6 @@ public class AddressResponse {
     private String street;
     private String cep;
     private Long number;
+    private Boolean active;
+
 }
