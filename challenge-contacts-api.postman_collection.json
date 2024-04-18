@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "27499d69-b286-4e26-bdfa-a91781ef72a6",
+		"name": "challenge-contacts-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15617069"
+	},
+	"item": [
+		{
+			"name": "GET-All-Contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostdev}}contact/list",
+					"host": [
+						"{{hostdev}}contact"
+					],
+					"path": [
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SEARCH-Contact-id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostdev}}contact/search/1",
+					"host": [
+						"{{hostdev}}contact"
+					],
+					"path": [
+						"search",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SAVE-Contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{hostdev}}contact/save",
+					"host": [
+						"{{hostdev}}contact"
+					],
+					"path": [
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE-Contact",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{hostdev}}contact/update/{contactId}/address/{addressId}",
+					"host": [
+						"{{hostdev}}contact"
+					],
+					"path": [
+						"update",
+						"{contactId}",
+						"address",
+						"{addressId}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE-Contact-Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{hostdev}}contact/delete/{id}",
+					"host": [
+						"{{hostdev}}contact"
+					],
+					"path": [
+						"delete",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
