@@ -2,11 +2,17 @@
 
 <div>
     <div style="display: inline_block"><br>
-    <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
-   <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" />
-   <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white" />
-   <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white" />
- </div>
+        <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
+        <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" />
+        <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" />
+        <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" />
+        <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white" />
+        <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black" />
+        <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white" />
+    </div>
+</div>
+
+
   
 # API para gestão de contatos
 
@@ -94,7 +100,11 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 
 3. **Buscar contato por id** (GET)
    - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/search/{id}`
-4. **Atualizar contato (PUT)**
+  
+4. **Buscar contato por nome** (GET)
+- `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/search?name=nome_buscado`
+    
+5. **Atualizar contato (PUT)**
    - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts//update/{contactId}/address/{addressId}`
      
      **BODY REQUEST:**
@@ -115,7 +125,7 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
      }
      ```
 
-5. **Deletar um contato** (DELETE)
+6. **Deletar um contato** (DELETE)
    - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/delete/{id}`
   
 
