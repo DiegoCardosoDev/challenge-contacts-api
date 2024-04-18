@@ -13,6 +13,25 @@
 
 A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para criar, buscar, atualizar e deletar contatos, bem como seus endereços associados.
 
+
+## Tecnologias usadas:
+
+- Java 17
+- Spring Boot
+-  PostgreSQL 16
+- Maven para gerenciamento de dependências
+- Swagger para documentação
+
+## Dependências:
+
+- Driver Postgres
+- Spring data jpa
+- Lombok
+- Spring Web
+- validation
+
+
+
 ## Funcionalidades
 
 - **Criar Contato**: Permite criar um novo contato.
@@ -32,62 +51,125 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 - Para gerenciar múltiplos endereços, foi adicionada uma regra que permite definir um endereço como ativo.
 
 
-
-## Tecnologias usadas:
-
-- Java 17
-- Spring Boot
-- Mysql
-- Maven para gerenciamento de dependências
-- Swagger para documentação
-
-## Dependências:
-
-- Driver Mysql
-- Spring data jpa
-- Lombok
-- Spring Web
-
 ## Execução Local do projeto
 
-### Instalação:
-
-- Java 17
-- Mysql
-- IDE Intellij
-- Postman para chamadas Http
-
-- crie  um banco no mysql
-- abra o projeto na ide Intellijj
-- aguarde o build do projeto
+- Pode ser acessado pela doc do swagger:  https://challenge-contacts-api-dev-1-1.onrender.com/swagger-ui/index.html#/
+- Pode ser testado atarves do [https://www.postman.com/](https://www.postman.com/)
+- Clone do projeto: `https://github.com/DiegoCardosoDev/challenge-contacts-api.git`
 
 
+- **Endpoints:**
+    
+1. **Criar um novo contato (POST)**
+   - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/save`
+  
+     
+     **BODY REQUEST:**
+     ```json
+     {
+       "contactName": "João Silva",
+       "contactEmail": "joao.silva@example.com",
+       "contactPhone": "+55 11 1234-5678",
+       "dateOfBirth": "08/05/1389",
+       "addressRequestList": [
+         {
+           "street": "Rua Teste",
+           "cep": "12345-678",
+           "number": 123,
+           "active": true
+         },
+         {
+           "street": "Avenida Principal",
+           "cep": "98765-432",
+           "number": 456,
+           "active": false
+         }
+       ]
+     }
+     ```
 
-### Configuração:
 
-1. Crie um banco no MySQL.
+2. **Listar Todos Contatos** (GET)
+   - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/list`
 
-2. Abra o projeto na IDE Intellij.
+3. **Buscar contato por id** (GET)
+   - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/search/{id}`
+4. **Atualizar contato (PUT)**
+   - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts//update/{contactId}/address/{addressId}`
+     
+     **BODY REQUEST:**
+     ```json
+     {
+       "contactName": "test005",
+       "contactEmail": "saphyra@example.com",
+       "contactPhone": "+55 11 1234-5678",
+       "dateOfBirth": "08/05/1989",
+       "addressRequestList": [
+         {
+           "street": "Rua ttue",
+           "cep": "09171-540",
+           "number": 1,
+           "active": false
+         }
+       ]
+     }
+     ```
 
-3. Aguarde o build do projeto.
+5. **Deletar um contato** (DELETE)
+   - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/delete/{id}`
+  
 
-4. No arquivo `application.properties`, aplique as seguintes configurações:
 
-```
-spring.application.name=contactsapi
-spring.datasource.url=jdbc:mysql://localhost:3306/seubancocriado?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-spring.datasource.username=seu_user_name_do_mysql
-spring.datasource.password=sua_senha_mysql
-spring.jpa.hibernate.ddl-auto=none
+  
+   # Execução do projeto Local 
 
+## 1. Instalação e Configuração do Java 17
+
+- Certifique-se de ter o Java 17 instalado e configurado corretamente em sua máquina.
+
+## 2. Instalação e Configuração do PostgreSQL 16
+
+- Instale o PostgreSQL 16 e configure-o conforme necessário para o seu ambiente.
+
+## 3. Instalação e Configuração do IntelliJ IDEA
+
+- Instale o IntelliJ IDEA, uma IDE popular para desenvolvimento Java.
+- Configure o IntelliJ IDEA de acordo com suas preferências e necessidades.
+
+## 4. Clone do Projeto
+
+- Faça o clone do projeto para sua máquina local utilizando o Git ou sua ferramenta de controle de versão.
+
+## 5. Abertura do Projeto no IntelliJ IDEA
+
+- Abra o IntelliJ IDEA e importe o projeto clonado para a IDE.
+
+## 6. Criação do Banco de Dados PostgreSQL
+
+- No PostgreSQL, crie um novo banco de dados que será utilizado pelo projeto.
+
+## 7. Configuração das Propriedades do Banco de Dados
+
+- Abra o arquivo `Application.properties` do projeto no IntelliJ IDEA.
+- Adicione as seguintes configurações para conectar ao banco de dados PostgreSQL:
+
+```properties
+spring.datasource.url=jdbc:postgresql://${DATABASE_URL}
+spring.datasource.username=${DATABASE_USERNAME}
+spring.datasource.password=${DATABASE_PASSWORD}
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-logging.level.org.hibernate.SQL=DEBUG
-logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 ```
 
-## Links
-- Swagger: http://localhost:8080/swagger-ui/index.html#/
-- Clone do projeto: https://github.com/DiegoCardosoDev/challenge-contacts-api.git
+## 8. Suba o servivor rodando a classe: ContactsapiApplication
+
+## 9. Usando o postman instalado ou web pode usar os endpoints descritos acima!
+
+
+
+
+
 
 
 
