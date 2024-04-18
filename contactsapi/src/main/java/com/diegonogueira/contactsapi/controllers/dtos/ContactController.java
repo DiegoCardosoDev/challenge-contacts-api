@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -35,7 +36,7 @@ public class ContactController {
             @ApiResponse(responseCode = "500", description = "Erro ao criar contato"),
     })
     @PostMapping (value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ContactResponse> createTechnologyStack(@RequestBody  ContactRequest contactRequest) {
+    public ResponseEntity<ContactResponse> createTechnologyStack(@RequestBody @Valid  ContactRequest contactRequest) {
         ContactResponse createdTechnologyStack = contactService.createCandidate(contactRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTechnologyStack);
     }
@@ -83,7 +84,7 @@ public class ContactController {
     })
     @PutMapping("/update/{contactId}/address/{addressId}")
     public ResponseEntity<ContactUpdateResponse> updateContact(@PathVariable Long contactId, @PathVariable Long addressId,
-                                                               @RequestBody UpdateContactAddressRequest request) {
+                                                               @RequestBody @Valid UpdateContactAddressRequest request) {
         ContactsEntity updatedContact = contactService.updateContactAndAddress(contactId, addressId, request);
         ContactUpdateResponse response = contactsMapper.mapContactToUpdateResponse(updatedContact, addressId);
         return ResponseEntity.ok(response);
