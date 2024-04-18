@@ -22,21 +22,22 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 
 ## Tecnologias usadas:
 
-- Java 17
-- Spring Boot
-- PostgreSQL 16
-- Maven para gerenciamento de dependências
-- Swagger para documentação
-- Padrão MVC
-- Deploy No Render
+- Java 17.
+- Spring Boot.
+- PostgreSQL 16.
+- Maven para gerenciamento de dependências.
+- Swagger para documentação.
+- Padrão MVC.
+- Deploy No Render.
 
 ## Dependências:
 
-- Driver Postgres
-- Spring data jpa
-- Lombok
-- Spring Web
-- validation
+- Driver Postgres.
+- Spring data jpa.
+- Lombok.
+- Spring Web.
+- validation.
+- Flyway para versionamento do banco de dados.
 
 
 
