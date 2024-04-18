@@ -53,6 +53,9 @@ public class ContactsMapper {
 
     public ContactsEntity mapAddressToRequest(ContactRequest contactRequest){
 
+        if (contactsRepository.existsByContactEmail(contactRequest.getContactEmail())) {
+            throw new IllegalArgumentException("E-mail já está em uso");
+        }
         ContactsEntity contactsEntity = new ContactsEntity();
         contactsEntity.setContactName(contactRequest.getContactName());
         contactsEntity.setContactEmail(contactRequest.getContactEmail());
