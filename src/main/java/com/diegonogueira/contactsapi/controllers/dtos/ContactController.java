@@ -63,6 +63,20 @@ public class ContactController {
         return contactService.getContactById(id);
     }
 
+
+
+
+    @Operation(summary = "Realiza A busca de contato por Nome", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Busca de contato realizada com sucesso!"),
+            @ApiResponse(responseCode = "500", description = "Erro ao realizar a Busca do contato"),
+            @ApiResponse(responseCode = "422", description = "erro ao buscar o contato com nome informado"),
+    })
+    @GetMapping("/search-name")
+    public List<ContactResponse> getContactByName(@RequestParam String name) {
+        return contactService.getContactByName(name);
+    }
+
     @Operation(summary = "Deleta o contato por ID", method = "DELETE")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Contato deletado com sucesso!"),
