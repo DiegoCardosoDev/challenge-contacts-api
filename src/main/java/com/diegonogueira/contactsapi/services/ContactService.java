@@ -92,6 +92,21 @@ public class ContactService {
         return contactRepository.save(existingContact);
     }
 
+    public List<ContactResponse> getContactByName(String name){
+
+        try {
+            List<ContactsEntity> candidates = contactRepository.findByContactNameContainingIgnoreCase(name);
+            if(candidates.isEmpty()){
+                throw new UnprocessableEntityException("not found with name{}"+ name);
+            }
+            return candidates.stream()
+                    .map(contactsMapper::mapContactsToResponse)
+                    .collect(Collectors.toList());
+        }catch ( Exception e ){
+            throw new BusinessException(format("not found contact with name = %s",name),e);
+        }
+    }
+
 }
 
 
