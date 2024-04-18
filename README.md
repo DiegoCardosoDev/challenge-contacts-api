@@ -24,9 +24,11 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 
 - Java 17
 - Spring Boot
--  PostgreSQL 16
+- PostgreSQL 16
 - Maven para gerenciamento de dependências
 - Swagger para documentação
+- Padrão MVC
+- Deploy No Render
 
 ## Dependências:
 
@@ -53,8 +55,11 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 - Um contato pode ter mais de um endereço associado.
   
 - Ao buscar ou deletar um contato, os endereços associados a esse contato são retornados ou excluídos, respectivamente.
-- o e-mail é unico, não é possivel criar contatots com mesmo email, o mesmo email só permitido na atualização de contato. 
+- o e-mail é unico, não é possivel criar contatos com mesmo email, o mesmo email só permitido na atualização de contato. 
 - Para gerenciar múltiplos endereços, foi adicionada uma regra que permite definir um endereço como ativo.
+
+
+
 
 
 ## Execução Local do projeto
@@ -102,35 +107,37 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
    - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/search/{id}`
   
 4. **Buscar contato por nome** (GET)
-- `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/search?name=nome_buscado`
+- `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/search-name?name=nome_buscado`
     
 5. **Atualizar contato (PUT)**
    - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts//update/{contactId}/address/{addressId}`
      
      **BODY REQUEST:**
-     ```json
+       ```json
      {
-       "contactName": "test005",
-       "contactEmail": "saphyra@example.com",
+       "contactName": "João Silva",
+       "contactEmail": "joao.silva@example.com",
        "contactPhone": "+55 11 1234-5678",
-       "dateOfBirth": "08/05/1989",
-       "addressRequestList": [
-         {
-           "street": "Rua ttue",
-           "cep": "09171-540",
-           "number": 1,
-           "active": false
-         }
-       ]
+       "dateOfBirth": "08/05/1389",
+       "addressId": 1,
+       "street": "Rua Teste",
+       "cep": "12345-678",
+       "number": 123,
+       "active": true   
      }
-     ```
+     
+
+
+
 
 6. **Deletar um contato** (DELETE)
    - `https://challenge-contacts-api-dev-1-1.onrender.com/contacts/delete/{id}`
   
 
 
-  
+
+
+
    # Execução do projeto Local 
 
 ## 1. Instalação e Configuração do Java 17
