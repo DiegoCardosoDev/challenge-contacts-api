@@ -47,7 +47,7 @@ public class ContactController {
             @ApiResponse(responseCode = "200", description = "Busca de contatos realizada com sucesso!"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar a Busca dos contatos"),
     })
-    @GetMapping(value = "/list",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/list")
     public List<ContactResponse> getAllCandidatesWithStacks() {
         return contactService.getAllContactsWithAddress();
     }
@@ -58,7 +58,7 @@ public class ContactController {
             @ApiResponse(responseCode = "500", description = "Erro ao realizar a Busca do contato"),
             @ApiResponse(responseCode = "422", description = "erro ao buscar o contato com id informado"),
     })
-    @GetMapping(value = "/search/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/search/{id}")
     public ContactResponse getById(@PathVariable Long id) {
         return contactService.getContactById(id);
     }
@@ -70,7 +70,7 @@ public class ContactController {
             @ApiResponse(responseCode = "422", description = "erro ao deletar o contato com id informado"),
 
     })
-    @DeleteMapping(value = "/delete/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable Long id) {
         this.contactService.deleteContact(id);
     }
