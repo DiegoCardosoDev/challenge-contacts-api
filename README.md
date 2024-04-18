@@ -66,6 +66,7 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 
 - Pode ser acessado pela doc do swagger:  https://challenge-contacts-api-dev-1-1.onrender.com/swagger-ui/index.html#/
 - Pode ser testado atarves do [https://www.postman.com/](https://www.postman.com/)
+- no repositorio acima tem a collection para usar no postaman: challenge-contacts-api.postman_collection.json, baixe e importe no postman.
 - Clone do projeto: `https://github.com/DiegoCardosoDev/challenge-contacts-api.git`
 
 
