@@ -28,7 +28,7 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 - Um contato pode ter mais de um endereço associado.
   
 - Ao buscar ou deletar um contato, os endereços associados a esse contato são retornados ou excluídos, respectivamente.
-  
+- o e-mail é unico, não é possivel criar contatots com mesmo email, o mesmo email só permitido na atualização de contato. 
 - Para gerenciar múltiplos endereços, foi adicionada uma regra que permite definir um endereço como ativo.
 
 
