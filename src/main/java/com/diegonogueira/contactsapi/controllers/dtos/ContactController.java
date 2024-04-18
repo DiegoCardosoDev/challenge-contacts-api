@@ -72,7 +72,7 @@ public class ContactController {
             @ApiResponse(responseCode = "500", description = "Erro ao realizar a Busca do contato"),
             @ApiResponse(responseCode = "422", description = "erro ao buscar o contato com nome informado"),
     })
-    @GetMapping("/search")
+    @GetMapping("/search-name")
     public List<ContactResponse> getContactByName(@RequestParam String name) {
         return contactService.getContactByName(name);
     }
