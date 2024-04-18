@@ -42,7 +42,7 @@ public class ContactController {
     }
 
 
-    @Operation(summary = "Realiza A bussca de contatos", method = "GET")
+    @Operation(summary = "Realiza A busca de contatos", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Busca de contatos realizada com sucesso!"),
             @ApiResponse(responseCode = "500", description = "Erro ao realizar a Busca dos contatos"),
