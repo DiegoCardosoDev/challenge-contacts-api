@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 public class AddressResponse {
 
+    private Long addressId;
     private String street;
     private String cep;
     private Long number;
