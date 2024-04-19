@@ -7,6 +7,8 @@ import com.diegonogueira.contactsapi.controllers.dtos.response.ContactResponse;
 import com.diegonogueira.contactsapi.controllers.dtos.response.ContactUpdateResponse;
 import com.diegonogueira.contactsapi.entity.adress.AddressEntity;
 import com.diegonogueira.contactsapi.entity.contact.ContactsEntity;
+import com.diegonogueira.contactsapi.exceptions.EmailAlreadyExistsException;
+import com.diegonogueira.contactsapi.exceptions.PhoneAlreadyExistsException;
 import com.diegonogueira.contactsapi.exceptions.UnprocessableEntityException;
 import com.diegonogueira.contactsapi.repository.AddressRepository;
 import com.diegonogueira.contactsapi.repository.ContactsRepository;
@@ -56,10 +58,10 @@ public class ContactsMapper {
     public ContactsEntity mapAddressToRequest(ContactRequest contactRequest){
 
         if (contactsRepository.existsByContactEmail(contactRequest.getContactEmail())) {
-            throw new IllegalArgumentException("Email is already in use");
+            throw new EmailAlreadyExistsException("Email is already in use");
         }
         if (contactsRepository.existsByContactPhone(contactRequest.getContactPhone())) {
-            throw new IllegalArgumentException("Phone is already in use");
+            throw new PhoneAlreadyExistsException("Phone is already in use");
         }
         ContactsEntity contactsEntity = new ContactsEntity();
         contactsEntity.setContactName(contactRequest.getContactName());
