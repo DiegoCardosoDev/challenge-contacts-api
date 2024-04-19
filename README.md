@@ -80,8 +80,8 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
      **BODY REQUEST:**
      ```json
      {
-       "contactName": "teste post",
-       "contactEmail": "testpost@example.com",
+       "contactName": "test2024",
+       "contactEmail": "testpost2024@example.com",
        "contactPhone": "+55 11 1234-5620",
        "dateOfBirth": "08/05/1990",
        "addressRequestList": [
@@ -117,12 +117,12 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
      **BODY REQUEST:**
        ```json
      {
-       "contactName": "João Silva",
-       "contactEmail": "joao.silva@example.com",
+       "contactName": "teste2024",
+       "contactEmail": "test2024@example.com",
        "contactPhone": "+55 11 1234-5678",
-       "dateOfBirth": "08/05/1389",
+       "dateOfBirth": "08/05/1989",
        "addressId": 1,
-       "street": "Rua Teste",
+       "street": "Rua Teste2024",
        "cep": "12345-678",
        "number": 123,
        "active": true   
