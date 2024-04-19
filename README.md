@@ -63,7 +63,7 @@ A API tem como objetivo gerenciar contatos, oferecendo funcionalidades para cria
 
 
 
-## Execução Local do projeto
+## Execução do projeto 
 
 - Pode ser acessado pela doc do swagger:  https://challenge-contacts-api-dev-1-1.onrender.com/swagger-ui/index.html#/
 - Pode ser testado atarves do [https://www.postman.com/](https://www.postman.com/)
