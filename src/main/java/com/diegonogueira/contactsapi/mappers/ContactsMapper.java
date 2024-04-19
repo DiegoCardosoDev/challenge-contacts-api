@@ -56,10 +56,10 @@ public class ContactsMapper {
     public ContactsEntity mapAddressToRequest(ContactRequest contactRequest){
 
         if (contactsRepository.existsByContactEmail(contactRequest.getContactEmail())) {
-            throw new IllegalArgumentException("E-mail já está em uso");
+            throw new IllegalArgumentException("Email is already in use");
         }
         if (contactsRepository.existsByContactPhone(contactRequest.getContactPhone())) {
-            throw new IllegalArgumentException("Telefone já existente");
+            throw new IllegalArgumentException("Phone is already in use");
         }
         ContactsEntity contactsEntity = new ContactsEntity();
         contactsEntity.setContactName(contactRequest.getContactName());
