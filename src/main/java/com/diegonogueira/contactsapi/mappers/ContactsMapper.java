@@ -31,6 +31,7 @@ public class ContactsMapper {
     public ContactResponse mapContactsToResponse(ContactsEntity contactsEntity) {
         ContactResponse contactResponse = new ContactResponse();
 
+        contactResponse.setContactId(contactsEntity.getContactId());
         contactResponse.setContactName(contactsEntity.getContactName());
         contactResponse.setContactEmail(contactsEntity.getContactEmail());
         contactResponse.setContactPhone(contactsEntity.getContactPhone());
@@ -39,6 +40,7 @@ public class ContactsMapper {
         List<AddressResponse> addressResponseList = contactsEntity.getAddresses().stream()
                 .map(addressEntity -> {
                     AddressResponse response = new AddressResponse();
+                    response.setAddressId(addressEntity.getAddressId());
                     response.setStreet(addressEntity.getStreet());
                     response.setNumber(addressEntity.getNumber());
                     response.setCep(addressEntity.getCep());
@@ -55,6 +57,9 @@ public class ContactsMapper {
 
         if (contactsRepository.existsByContactEmail(contactRequest.getContactEmail())) {
             throw new IllegalArgumentException("E-mail já está em uso");
+        }
+        if (contactsRepository.existsByContactPhone(contactRequest.getContactPhone())) {
+            throw new IllegalArgumentException("Telefone já existente");
         }
         ContactsEntity contactsEntity = new ContactsEntity();
         contactsEntity.setContactName(contactRequest.getContactName());
@@ -79,6 +84,7 @@ public class ContactsMapper {
     public ContactUpdateResponse mapContactToUpdateResponse(ContactsEntity contactsEntity, Long addressId) {
         ContactUpdateResponse contactResponse = new ContactUpdateResponse();
 
+        contactResponse.setContactId(contactsEntity.getContactId());
         contactResponse.setContactName(contactsEntity.getContactName());
         contactResponse.setContactEmail(contactsEntity.getContactEmail());
         contactResponse.setContactPhone(contactsEntity.getContactPhone());

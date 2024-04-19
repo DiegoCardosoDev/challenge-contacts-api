@@ -11,6 +11,7 @@ import java.util.List;
 @Setter
 public class ContactUpdateResponse {
 
+    private Long contactId;
     private String contactName;
     private String contactEmail;
     private String contactPhone;
