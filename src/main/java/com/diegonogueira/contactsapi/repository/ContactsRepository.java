@@ -10,6 +10,7 @@ import java.util.List;
 public interface ContactsRepository extends JpaRepository<ContactsEntity, Long> {
 
     boolean existsByContactEmail(String contactEmail);
+    boolean existsByContactPhone(String contactPhone);
 
     List<ContactsEntity> findByContactNameContainingIgnoreCase(String contactName);
 }
