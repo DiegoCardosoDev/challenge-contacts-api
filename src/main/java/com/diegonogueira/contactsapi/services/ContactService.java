@@ -6,6 +6,8 @@ import com.diegonogueira.contactsapi.controllers.dtos.response.ContactResponse;
 import com.diegonogueira.contactsapi.entity.adress.AddressEntity;
 import com.diegonogueira.contactsapi.entity.contact.ContactsEntity;
 import com.diegonogueira.contactsapi.exceptions.BusinessException;
+import com.diegonogueira.contactsapi.exceptions.EmailAlreadyExistsException;
+import com.diegonogueira.contactsapi.exceptions.PhoneAlreadyExistsException;
 import com.diegonogueira.contactsapi.exceptions.UnprocessableEntityException;
 import com.diegonogueira.contactsapi.mappers.ContactsMapper;
 import com.diegonogueira.contactsapi.repository.AddressRepository;
@@ -73,6 +75,15 @@ public class ContactService {
     public ContactsEntity updateContactAndAddress(Long contactId, Long addressId, UpdateContactAddressRequest request) {
         ContactsEntity existingContact = contactRepository.findById(contactId)
                 .orElseThrow(() -> new UnprocessableEntityException("Contact not found with id: " + contactId));
+
+
+        if (contactRepository.existsByContactEmailAndIdNot(request.getContactEmail(), contactId)) {
+            throw new EmailAlreadyExistsException("Email is already in use");
+        }
+
+        if (contactRepository.existsByContactPhoneAndIdNot(request.getContactPhone(), contactId)) {
+            throw new PhoneAlreadyExistsException("Phone is already in use");
+        }
 
         existingContact.setContactName(request.getContactName());
         existingContact.setContactEmail(request.getContactEmail());
